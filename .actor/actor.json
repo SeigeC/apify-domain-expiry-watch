@@ -1,0 +1,61 @@
+{
+  "actorSpecification": 1,
+  "name": "domain-expiry-watch",
+  "title": "Domain Expiry Watch",
+  "description": "Check domain expiry dates, registrars, nameservers, and SSL certificate status in batch. Input a list of domains, get back expiry dates, registrars, and SSL cert details. Perfect for SEO agencies monitoring client domains and domain investors tracking expiration dates.",
+  "version": "0.1.0",
+  "buildTag": "latest",
+  "environmentVariables": [],
+  "input": {
+    "title": "Domain list",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "domains": {
+        "title": "Domains",
+        "type": "array",
+        "description": "List of domain names to check (e.g., example.com, google.com)",
+        "editor": "json",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1
+      }
+    },
+    "required": ["domains"]
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Domain expiry results",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "domain",
+              "registrar",
+              "expiration_date",
+              "registration_date",
+              "status",
+              "ssl_cert_expiry",
+              "ssl_cert_issuer",
+              "error"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "columns": [
+              {"field": "domain", "label": "Domain"},
+              {"field": "registrar", "label": "Registrar"},
+              {"field": "expiration_date", "label": "Expiration"},
+              {"field": "ssl_cert_expiry", "label": "SSL Expiry"},
+              {"field": "error", "label": "Error"}
+            ]
+          }
+        }
+      }
+    }
+  }
+}

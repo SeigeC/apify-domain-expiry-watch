@@ -1,0 +1,4 @@
+*.exe
+.DS_Store
+apify-domain-expiry-watch
+actor

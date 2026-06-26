@@ -1,0 +1,19 @@
+{
+  "title": "Domain list",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "domains": {
+      "title": "Domains",
+      "type": "array",
+      "description": "List of domain names to check (e.g., example.com, google.com)",
+      "editor": "json",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["domains"]
+}
